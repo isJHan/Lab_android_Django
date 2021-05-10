@@ -1,0 +1,6 @@
+# vscode 配置文件
+.vscode/
+
+# virtual env
+venv/
+
