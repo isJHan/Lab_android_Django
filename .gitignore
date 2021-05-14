@@ -4,3 +4,5 @@
 # virtual env
 venv/
 
+# 媒体资源文件
+media/
