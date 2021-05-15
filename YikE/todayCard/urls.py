@@ -7,6 +7,7 @@ appname = 'todayCard'
 
 urlpatterns = [
     path('getTodayInfo/', views.getTodayInfo),
+    path('getQnjrInfo/', views.getQnjrInfo),
     # path('qnjr/', ),
     # path('dzcard/', ),
     # path('comment/', ),

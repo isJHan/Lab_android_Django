@@ -3,6 +3,11 @@ from django.db import models
 # Create your models here.
 
 class TodayCard(models.Model):
+
+    class checkState(models.IntegerChoices):
+        ing_check = 0 # 审核中
+        ed_check = 1 # 审核完成
+
     # tcid = models.CharField(max_length=20) # pk
     carrddate = models.DateField()
     type = models.CharField(max_length=10)
@@ -13,7 +18,7 @@ class TodayCard(models.Model):
     dzcount = models.IntegerField()
     collectcount = models.IntegerField()
     commentcount = models.IntegerField()
-    state = models.IntegerField() # 从0和1中选择
+    state = models.IntegerField(choices=checkState.choices) # 从0和1中选择
 
     # 迭代器
     def __iter__(self):
