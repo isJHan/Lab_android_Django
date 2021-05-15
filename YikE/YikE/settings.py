@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'todayCard.apps.TodaycardConfig',
+    'comments.apps.CommentsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
