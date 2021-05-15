@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.urls')),
     path('api/todayCard/', include('todayCard.urls')),
+    path('api/comments/', include('comments.urls')),
     # path('admin/', admin.site.urls),
 ]
