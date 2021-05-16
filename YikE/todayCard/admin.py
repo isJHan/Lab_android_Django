@@ -1,9 +1,16 @@
 # from YikE.todayCard.models import QnjrCard, TodayCard
 from .models import TodayCard, QnjrCard
 from django.contrib import admin
-from django.utils.safestring import mark_safe
+# from django.utils.safestring import mark_safe
 # Register your models here.
-admin.site.register(TodayCard)
+
+
+class TodayCardAdmin(admin.ModelAdmin):
+    readonly_fields = ('pictuer_preview',)
+
+    # fields = ( 'picture', )
+
+admin.site.register(TodayCard, TodayCardAdmin)
 admin.site.register(QnjrCard)
 
 # @admin.register(TodayCard)
