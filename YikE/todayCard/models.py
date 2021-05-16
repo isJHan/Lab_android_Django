@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.safestring import mark_safe
+from YikE.settings import MEDIA_REQ_ROOT_PATH
 # Create your models here.
 
 class TodayCard(models.Model):
@@ -23,7 +24,7 @@ class TodayCard(models.Model):
     @property
     def pictuer_preview(self):
         if self.picture:
-            return mark_safe('<img src="{}" width="300" height="300" />'.format(self.picture.url))
+            return mark_safe('<img src="/{}{}" width="300" height="300" />'.format(MEDIA_REQ_ROOT_PATH ,self.picture.url))
         return ""
     # pictuer_preview.short_description = 'picture'
     # pictuer_preview.allow_tags = True

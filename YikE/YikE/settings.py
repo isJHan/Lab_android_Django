@@ -123,3 +123,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MEDIA_PATH = ''
+MEDIA_REQ_ROOT_PATH = 'api'
