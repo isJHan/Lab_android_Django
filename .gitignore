@@ -6,3 +6,12 @@ venv/
 
 # 媒体资源文件
 media/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+migrations/
+!migrations/__init__.py
