@@ -57,7 +57,7 @@ def login(request):
 
     
 @check_login
-def getUserInfo(request):
+def getMyInfo(request):
     # uid = "00001"
 
     # uid = request.GET.get("uid", default = "00001")
@@ -73,6 +73,21 @@ def getUserInfo(request):
     return HttpResponse(serializers.serialize('json', theUser))
     # return JsonResponse(UserDic)
     
+
+
+
+@check_login
+def getUserInfo(request):
+    # GET
+    uid = request.GET.get('uid')
+    userS = user.objects.filter(uid = uid)
+    # strInfo = serializers.serialize("json", userS)
+    # # print(type(jsonInfo))
+    # # print(jsonInfo)
+    # import json
+    # listInfo = json.loads(strInfo)
+    # listInfo[0]["pk"]
+    return HttpResponse(serializers.serialize("json", userS))
 
 
 

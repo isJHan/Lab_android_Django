@@ -1,10 +1,14 @@
 from django.http.response import JsonResponse
+from django.core import serializers
+from django.http.response import HttpResponse
+
 # from django.shortcuts import render
 # from YikE.todayCard.models import TodayCard
 from todayCard.models import TodayCard
 from accounts.decorator import check_login
 from .models import comment as commentTable
 from accounts.models import user as userTable
+
 # Create your views here.
 
 """
@@ -65,7 +69,7 @@ def __clt(uid, tcid):
     cltCard.collectcount = count # 更新收藏数
     return {'error': False, 'collectcount': count}
 
-# @check_login
+@check_login
 def collectCard(request):
     # POST
     uid = request.session.get('user')
@@ -79,3 +83,10 @@ def collectCard(request):
     ret = __clt(uid, tcid)
     return JsonResponse(ret)
 
+
+@check_login
+def getCommentsInfo(request):
+    # GET
+    tcid = request.GET.get('tcid')
+    allComments = commentTable.objects.filter(tcid = tcid)
+    return HttpResponse(serializers.serialize("json", allComments)) # 序列化
