@@ -5,4 +5,5 @@ appname = "comments"
 urlpatterns = [
     path('dzcard/', views.dzCard),
     path('comment/', views.comment),
+    path('collect/', views.collectCard),
 ]
