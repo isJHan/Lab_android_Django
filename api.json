@@ -1,0 +1,445 @@
+[
+    {
+        "url": "/api/register/",
+        "功能": "注册",
+        "类型": "POST",
+        "请求": {
+            "uid": "id",
+            "pwd": "密码",
+            "user": "用户名"
+        },
+        "正确返回": {
+            "error": "False",
+            "info": {
+                "uid": "id",
+                "username": "用户名"
+            }
+        },
+        "出错返回": {
+            "error": "True",
+            "errorInfo": "已存在用户名"
+        }
+    },
+
+
+    {
+        "url": "/api/accounts/login/",
+        "功能": "登录",
+        "类型": "POST",
+        "请求": {
+            "uid": "id",
+            "pwd": "密码"
+        },
+        "正确返回": {
+            "error": "False",
+            "info": {
+                "uid": "id",
+                "username": "用户名"
+            }
+        },
+        "出错返回": {
+            "error": "True"
+        }
+    },
+
+
+    {
+        "url": "/api/accounts/getMyInfo/",
+        "功能": "获取我的信息",
+        "类型": "GET",
+        "请求": {
+
+        },
+        "正确返回": 
+            [
+                {
+                    "model": "accounts.user",
+                    "pk": "00001",
+                    "fields": {
+                        "username": "jhan",
+                        "photo": "media/user/avator/屏幕截图1_cSj6R2d.png",
+                        "collectid": [
+                            1
+                        ],
+                        "contributeid": [
+                            1,
+                            2
+                        ]
+                    }
+                }
+            ]
+        ,
+        "出错返回": {
+            "无": "无"
+        }
+    },
+    {
+        "url": "/api/accounts/getUserInfo/?uid=00001",
+        "方法": "GET",
+        "功能": "获取指定uid用户信息",
+        "请求": {
+            "uid": "用户id"
+        },
+        "正确返回": 
+            [
+                {
+                    "model": "accounts.user",
+                    "pk": "00002",
+                    "fields": {
+                        "username": "lKaiy",
+                        "photo": "",
+                        "collectid": [],
+                        "contributeid": []
+                    }
+                }
+            ]
+        ,
+        "出错返回": {
+            "无": "无"
+        },
+        "注释": ""
+    },
+    {
+        "url": "/api/accounts/logout/",
+        "方法": "POST",
+        "功能": "登出",
+        "请求": {
+            "无": "无"
+        },
+        "正确返回": {
+            "success": "True"
+        },
+        "出错返回": {
+            "无":"无"
+        }
+    },
+    {
+        "url": "/api/todayCard/getTodayInfo/",
+        "方法":"GET",
+        "功能": "获取今日推送的信息",
+        "请求": {
+            "无":"无"
+        },
+        "正确返回": 
+            [
+                {
+                    "model": "todayCard.todaycard",
+                    "pk": 3,
+                    "fields": {
+                        "carrddate": "2021-05-17",
+                        "type": "冷知识",
+                        "title": "为什么这周五答辩依然不慌?",
+                        "text": ".................................",
+                        "text_author": "jhan",
+                        "picture": "media/todayCard/img/LimosaLimosa_ROW2303701859_1920x1080.jpg",
+                        "dzcount": 0,
+                        "collectcount": 0,
+                        "commentcount": 0,
+                        "state": 1
+                    }
+                },
+                {
+                    "model": "todayCard.todaycard",
+                    "pk": 4,
+                    "fields": {
+                        "carrddate": "2021-05-17",
+                        "type": "冷知识",
+                        "title": "为什么我没写default属性?",
+                        "text": "................................................",
+                        "text_author": "jhan",
+                        "picture": "media/todayCard/img/Guatape_ROW3885912330_1920x1080.jpg",
+                        "dzcount": 0,
+                        "collectcount": 0,
+                        "commentcount": 0,
+                        "state": 1
+                    }
+                }
+            ]
+        ,
+        "出错返回": {}
+    },
+    {
+        "url": "/api/todayCard/getQnjrInfo/",
+        "方法": "GET",
+        "功能": "获取去年今日",
+        "请求": {
+            "无":"无"
+        },
+        "正确返回": 
+            [
+                {
+                    "model": "todayCard.qnjrcard",
+                    "pk": 1,
+                    "fields": {
+                        "craddate": "2021-05-17",
+                        "text": "去年的今天是某人的生日吧",
+                        "picture": "media/qnjrCard/img/Guatape_ROW3885912330_1920x1080.jpg",
+                        "state": 0
+                    }
+                },
+                {
+                    "model": "todayCard.qnjrcard",
+                    "pk": 2,
+                    "fields": {
+                        "craddate": "2021-05-17",
+                        "text": "前年的今天也还是他的生日呢",
+                        "picture": "media/qnjrCard/img/ThosegharWaterfalls_ROW2626292300_1920x1080.jpg",
+                        "state": 0
+                    }
+                }
+            ]
+        ,
+        "出错返回": {}
+    },
+    {
+        "url": "/api/comments/dzcard/",
+        "方法":"POST",
+        "功能": "点赞今日卡片",
+        "请求": {
+            "tcid": "卡片的id"
+        },
+        "正确返回": {
+            "count": "当前卡片的点赞数"
+        },
+        "出错返回": {},
+        
+        "?疑问?": "需要避免重复点赞"
+
+    },
+    {
+        "url": "/api/comments/comment/",
+        "方法":"POST",
+        "功能": "评论卡片",
+        "请求": {
+            "tcid":"卡片的id",
+            "ctext": "评论内容"
+        },
+        "正确返回": {
+            "error": false,
+            "commentcount": "当前评论数"
+        },
+        "出错返回": {},
+        "注释": "评论人的id从session中取得",
+
+        "?疑问?": "是否需要返回当前卡片的全部评论"
+
+    },
+    {
+        "url": "/api/comments/collect/",
+        "方法":"POST",
+        "功能": "收藏当前卡片",
+        "请求": {
+            "tcid":"卡片的id"
+        },
+        "正确返回": {},
+        "出错返回": {},
+        "注释": "评论人的id从session中取得",
+
+        "?疑问?": "需要避免重复收藏"
+
+    },
+    {
+        "url": "/api/comments/getCommentInfo/?tcid=1",
+        "方法":"GET",
+        "功能": "获取tcid的全部评论",
+        "请求": {},
+        "正确返回": 
+            [
+                {
+                    "model": "comments.comment",
+                    "pk": 1,
+                    "fields": {
+                        "tcid": 1,
+                        "ctext": "good!",
+                        "uid": "00002"
+                    }
+                },
+                {
+                    "model": "comments.comment",
+                    "pk": 2,
+                    "fields": {
+                        "tcid": 1,
+                        "ctext": "good!",
+                        "uid": "00001"
+                    }
+                },
+                {
+                    "model": "comments.comment",
+                    "pk": 3,
+                    "fields": {
+                        "tcid": 1,
+                        "ctext": "good!",
+                        "uid": "00001"
+                    }
+                },
+                {
+                    "model": "comments.comment",
+                    "pk": 4,
+                    "fields": {
+                        "tcid": 1,
+                        "ctext": "good!",
+                        "uid": "00001"
+                    }
+                },
+                {
+                    "model": "comments.comment",
+                    "pk": 5,
+                    "fields": {
+                        "tcid": 1,
+                        "ctext": "good!",
+                        "uid": "00001"
+                    }
+                }
+            ]
+        ,
+        "出错返回": {},
+        "注释": "需要再通过uid获取评论人的信息, 以在界面显示用户名头像等",
+        
+        "?疑问?": "是否需要在评论表中加入评论时间"
+
+    },
+    {
+        "url": "api/media/todayCard/img/Logo.png",
+        "方法":"GET",
+        "功能": "返回媒体资源, 直接访问返回图片的路径",
+        "请求": {},
+        "正确返回": {
+            "img": "imgBit"
+        },
+        "出错返回": {},
+        "注释": "暴露静态资源, Django的一个功能"
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "/api/",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    },
+    {
+        "url": "",
+        "功能": "",
+        "请求": {},
+        "正确返回": {},
+        "出错返回": {}
+    }
+]
