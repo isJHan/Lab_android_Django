@@ -1,6 +1,6 @@
 [
     {
-        "url": "/api/register/",
+        "url": "/api/accounts/register/",
         "功能": "注册",
         "类型": "POST",
         "请求": {
