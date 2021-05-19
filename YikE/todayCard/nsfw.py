@@ -3,9 +3,9 @@
 import sys
 import json
 import requests
-
+from YikE.settings import TENSORFLOW_MODEL_SERVER_ROOT
 _IMAGE_SIZE = 64
-SERVER_URL = 'http://localhost:8501/v1/models/nsfw:predict'
+SERVER_URL = '{}v1/models/nsfw:predict'.format(TENSORFLOW_MODEL_SERVER_ROOT)
 _LABEL_MAP = {0:'drawings', 1:'hentai', 2:'neutral', 3:'porn', 4:'sexy'}
 
 from PIL import Image

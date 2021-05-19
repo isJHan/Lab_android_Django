@@ -124,3 +124,5 @@ STATIC_URL = '/static/'
 
 MEDIA_PATH = ''
 MEDIA_REQ_ROOT_PATH = 'api'
+
+TENSORFLOW_MODEL_SERVER_ROOT = 'http://localhost:8051/'
