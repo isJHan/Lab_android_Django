@@ -16,10 +16,10 @@ class TodayCard(models.Model):
     text = models.CharField(max_length=64)
     text_author = models.CharField(max_length=20)
     picture = models.ImageField(upload_to = 'media/todayCard/img/')
-    dzcount = models.IntegerField()
-    collectcount = models.IntegerField()
-    commentcount = models.IntegerField()
-    state = models.IntegerField(choices=checkState.choices) # 从0和1中选择
+    dzcount = models.IntegerField(default=0)
+    collectcount = models.IntegerField(default=0)
+    commentcount = models.IntegerField(default=0)
+    state = models.IntegerField(choices=checkState.choices, default=0) # 从0和1中选择
 
     @property
     def pictuer_preview(self):
